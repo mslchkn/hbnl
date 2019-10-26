@@ -8,15 +8,14 @@
     <title>Hub Nail - @yield('meta_title', 'title')</title>
     <meta name="description" content="@yield('meta_description', 'description')">
 
-    <link rel="icon" href="@yield('path_favicon', URL::asset('assets/img/favicon.png'))" type="image/png">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css')}}">
-
+    <link rel="icon" href="@yield('path_favicon', \Illuminate\Support\Facades\URL::asset('assets/img/favicon.png'))" type="image/png">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/style.css')}}">
 </head>
 <body>
 <!--================ Start Header Menu Area =================-->
@@ -32,43 +31,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                                <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                                <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                                <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Blog</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Pages</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-                                <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul>
-
                     <ul class="nav-shop">
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
                         <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-                        <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+                        <li class="nav-item"><a class="button button-header" href="#">Магазин</a></li>
                     </ul>
                 </div>
             </div>
@@ -171,14 +137,13 @@
     </div>
 </footer>
 <!--================ End footer Area  =================-->
-<script src="{{ URL::asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/skrollr.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/owl.carousel.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/mail-script.js') }}"></script>
-<script src="{{ URL::asset('assets/js/main.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/skrollr.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/mail-script.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/main.js') }}"></script>
 </body>
 </html>
-

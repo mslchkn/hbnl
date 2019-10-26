@@ -11,8 +11,49 @@
 |
 */
 
+//$router->get('/', [
+//    'as' => 'get.homepage',
+//    'uses' => 'HomeController@view'
+//]);
+
 $router->get('/', [
+    'as' => 'get.wait',
+    'uses' => 'HomeController@wait'
+]);
+
+$router->get('/login', [
     'as' => 'get.homepage',
-    'uses' => 'HomeController@view'
-]
-);
+    'uses' => 'Admin\AuthController@view'
+]);
+
+$router->get('/admin', [
+    'as' => 'get.homepage',
+    'uses' => 'Admin\AdminController@view'
+]);
+
+$router->get('/admin/home', [
+    'as' => 'edit.homepage',
+    'uses' => 'Admin\HomeController@view'
+]);
+
+$router->get('/admin/cart', [
+    'as' => 'edit.cart',
+    'uses' => 'Admin\CartController@view'
+]);
+
+$router->get('/admin/settings', [
+    'as' => 'edit.settings',
+    'uses' => 'Admin\SettingsController@view'
+]);
+
+$router->get('/admin/product', [
+    'as' => 'edit.settings',
+    'uses' => 'Admin\ProductController@view'
+]);
+
+$router->get('/admin/products', [
+    'as' => 'edit.settings',
+    'uses' => 'Admin\ProductsController@view'
+]);
+
+

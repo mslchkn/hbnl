@@ -22,8 +22,15 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->withFacades();
+$app->withEloquent();
 
-// $app->withEloquent();
+//$app->configure('swagger-lume');
+//$app->configure('a8');
+//$app->configure('ad');
+//$app->configure('jira');
+//$app->configure('confluence');
+//$app->configure('amqp');
+//$app->configure('system');
 
 /*
 |--------------------------------------------------------------------------
