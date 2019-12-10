@@ -10,6 +10,7 @@
                 <div class="col-lg-12">
                     <div class="login_form_inner">
                         <h3>Log in to enter</h3>
+                        <span class="error-block" style="color: #ff4b4b;font-size: 14px;display:none;"></span>
                         <form class="row login_form" id="contactForm" >
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="login" name="login" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
@@ -24,7 +25,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <button type="submit" id="loginSubmit" value="submit" class="button button-login w-100">Log In</button>
+                                <button type="button" id="loginSubmit" value="submit" class="button button-login w-100">Log In</button>
                             </div>
                         </form>
                     </div>
@@ -34,8 +35,30 @@
     </section>
 @stop
 
+<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery-3.2.1.min.js') }}"></script>
 <script>
-    $('#loginSubmit').click(function(){
-
+    $( document ).ready(function() {
+        $('#loginSubmit').click(function(){
+            $('.error-block').hide();
+            $.ajax({
+                type: "POST",
+                url: 'http://hubnail.loc/auth',
+                dataType: "json",
+                data: {login:$('#login').val(), password:$('#password').val()},
+                success : function(data){
+                    $('.error-block').html('');
+                    window.location.replace("http://hubnail.loc/admin/home");
+                },
+                error: function(data){
+                    $('.error-block').html('');
+                    $.each(  data.responseJSON.errors, function( key, value ) {
+                        $('.error-block').prepend( '<p>' + key + ": " + value + '</p>');
+                    });
+                    $('.error-block').show();
+                }
+            });
+        });
     });
 </script>
+
+

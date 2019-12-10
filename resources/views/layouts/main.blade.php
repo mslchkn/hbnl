@@ -33,7 +33,14 @@
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav-shop">
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
-                        <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+                        <li class="nav-item">
+                            <button id="top-cart" data-toggle="modal" data-target="#modal-cart">
+                                <i class="ti-shopping-cart"></i>
+                                @if($cart_sum > 0)
+                                    <span class="nav-shop__circle">{{$cart_sum}}</span>
+                                @endif
+                            </button>
+                        </li>
                         <li class="nav-item"><a class="button button-header" href="#">Магазин</a></li>
                     </ul>
                 </div>
@@ -145,5 +152,98 @@
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/mail-script.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/main.js') }}"></script>
+<script>
+
+    $( document ).ready(function() {
+        $('#loginSubmit').click(function(){
+            alert(888);
+        });
+
+        $('#modal-view-product').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+
+            $.ajax({
+                url: "http://hubnail.loc/maslechkin/product/" + id,
+                success: function(data){
+                    modal.find('.modal-content#product-view').html(data);
+                    console.log(data);
+                }
+            });
+        });
+
+        $('#modal-cart').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+
+            if(button.data('id')) {
+                var id = button.data('id');
+                sendToCart(id, $(this));
+            } else {
+                getCartProducts($(this));
+            }
+
+        });
+
+        function sendToCart(id, modal) {
+            $.ajax({
+                url: "http://hubnail.loc/maslechkin/cart/product/" + id,
+                method: 'POST',
+                success: function(data){
+                    modal.find('.cart-table tbody').html(data);
+                    $('.cart-product-quantity').on('change', function(){
+                        changeCount($(this).data('id'), modal, $(this).val());
+                    });
+                    $('#sendCart').on('click', function(){
+                        $.ajax({
+                            url: "http://hubnail.loc/maslechkin/cart/send",
+                            method: 'POST',
+                            success: function(data){
+                                console.log('Success ');
+                            }
+                        });
+                    });
+                }
+            });
+        }
+
+        function changeCount(id, modal, product_sum) {
+            $.ajax({
+                url: "http://hubnail.loc/maslechkin/cart/product/" + id + "/count/" + product_sum,
+                method: 'POST',
+                success: function(data){
+                    modal.find('.cart-table tbody').html(data);
+                    $('.cart-product-quantity').on('change', function(){
+                        changeCount($(this).data('id'), modal, $(this).val());
+                    });
+                }
+            });
+        }
+
+        function getCartProducts(modal) {
+            $.ajax({
+                url: "http://hubnail.loc/maslechkin/cart/product/",
+                method: 'GET',
+                success: function(data){
+                    modal.find('.cart-table tbody').html(data);
+                    $('.cart-product-quantity').on('change', function(){
+                        changeCount($(this).data('id'), modal, $(this).val());
+                    });
+                    $('#sendCart').on('click', function(){
+                        $.ajax({
+                            url: "http://hubnail.loc/maslechkin/cart/send",
+                            method: 'POST',
+                            success: function(data){
+                                console.log('Success ');
+                            }
+                        });
+                    });
+                }
+            });
+        }
+
+
+    });
+</script>
 </body>
 </html>

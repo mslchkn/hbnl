@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlugins extends Migration
+class CreateOrderProducts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePlugins extends Migration
      */
     public function up()
     {
-        Schema::create('plugins', function (Blueprint $table) {
+        Schema::create('order_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('name', 255)->nullable(false);
-            $table->char('description', 255)->nullable(true);
-            $table->json('settings')->nullable(false);
-            $table->tinyInteger('active')->default(1);
+            $table->integer('order_id')->nullable(false);
+            $table->integer('product_id')->nullable(false);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreatePlugins extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plugins');
+        Schema::dropIfExists('order_products');
     }
 }

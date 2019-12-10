@@ -24,13 +24,17 @@ $app = new Laravel\Lumen\Application(
 $app->withFacades();
 $app->withEloquent();
 
-//$app->configure('swagger-lume');
-//$app->configure('a8');
+$app->configure('session');
+$app->configure('cart');
 //$app->configure('ad');
 //$app->configure('jira');
 //$app->configure('confluence');
 //$app->configure('amqp');
 //$app->configure('system');
+$app->configure('mail');
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +57,12 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->singleton('cookie', function () use ($app) {
+    return $app->loadComponent('session', \Illuminate\Cookie\CookieServiceProvider::class, 'cookie');
+});
+
+$app->bind(\Illuminate\Contracts\Cookie\QueueingFactory::class, 'cookie');
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -63,6 +73,9 @@ $app->singleton(
 | route or middleware that'll be assigned to some specific routes.
 |
 */
+$app->routeMiddleware([
+    'admin' => App\Http\Middleware\Admin::class,
+]);
 
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
@@ -71,7 +84,17 @@ $app->singleton(
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
+$app->middleware([
+    \Illuminate\Session\Middleware\StartSession::class
+]);
 
+$app->singleton(Illuminate\Session\SessionManager::class, function () use ($app) {
+    return $app->loadComponent('session', Illuminate\Session\SessionServiceProvider::class, 'session');
+});
+
+$app->singleton('session.store', function () use ($app) {
+    return $app->loadComponent('session', Illuminate\Session\SessionServiceProvider::class, 'session.store');
+});
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -86,6 +109,7 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(\Illuminate\Mail\MailServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

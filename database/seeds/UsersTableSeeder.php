@@ -10,7 +10,7 @@ class UsersTableSeeder extends Seeder
             \Illuminate\Support\Facades\DB::table('users')->insert(
                 [
                     'login' => 'briryl',
-                    'password' => 'bbb798490bbb',
+                    'password' => md5('bbb798490bbb'),
                 ]);
 
         }
