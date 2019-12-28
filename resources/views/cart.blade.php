@@ -1,45 +1,26 @@
 @foreach($products as $product)
-    <tr class="product-cart">
-        <td>
-            <div class="media">
-                <div class="d-flex">
-                    <img style="padding-right: 10px" src="{{ URL::to('/') }}/assets/images/cart1.png" alt="">
-                </div>
-                <div class="media-body">
-                    {{$product['item']['description']}}
-                </div>
+    <div class="product-cart">
+            <div class="product_image">
+                <img style="padding-right: 10px" src="{{ URL::to('/') }}/assets/images/cart1.png" alt="">
+                <p>{{$product['item']['description']}}</p>
             </div>
-        </td>
-        <td>
-            <h5>{{$product['item']['price']}}</h5>
-        </td>
-        <td>
+            <div>
+                <h5>{{$product['item']['price']}} грн.</h5>
+            </div>
             <div class="product_count">
                 <input type="number" name="qty" maxlength="12" data-id="{{$product['item']['id']}}" value="{{$product['quantity']}}" title="Quantity:"
                        class="input-text cart-product-quantity qty">
             </div>
-        </td>
-        <td>
-            <h5>{{(float)$product['quantity']*$product['item']['price']}} грн.</h5>
-        </td>
-    </tr>
+            <div class="product_total">
+                <h5>{{(float)$product['quantity']*$product['item']['price']}} грн.</h5>
+            </div>
+    </div>
 @endforeach
-<tr>
-    <td>
-
-    </td>
-    <td>
-
-    </td>
-    <td>
-        <h5>Subtotal</h5>
-    </td>
-    <td>
-        <h5>{{$sum}} грн.</h5>
-    </td>
-</tr>
-<tr class="out_button_area">
-    <td class="d-none-l" colspan="3">
+<div class="subtotal-row">
+    <h5>Subtotal</h5>
+    <h5 class="sum">{{$sum}} грн.</h5>
+</div>
+<div class="details">
         <div>
             <input type="text" class="form-control mb-1" name="name" placeholder="Имя">
         </div>
@@ -52,11 +33,7 @@
         <div>
             <textarea name="comment" class="form-control mb-1" placeholder="Комментарий"></textarea>
         </div>
-    </td>
-    <td>
-
-    </td>
-</tr>
+</div>
 <tr class="out_button_area">
     <td class="d-none-l">
 

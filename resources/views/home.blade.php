@@ -159,22 +159,20 @@
     <!-- ================ Modal cart ============================ -->
     <div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
          aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" style="width:1200px; padding: 5px;">
+        <div class="modal-dialog modal-dialog-centered cart-preview" role="document">
+            <div class="modal-content">
                 <h3 style="text-align: center">Оформление заказа</h3>
-                    <table class="table cart-table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Товар</th>
-                            <th scope="col">Цена</th>
-                            <th scope="col">Количество</th>
-                            <th scope="col">Сумма</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <div class="cart-table">
+                        <div class="heading">
+                            <div>Товар</div>
+                            <div>Цена</div>
+                            <div>Количество</div>
+                            <div>Сумма</div>
+                        </div>
+                        <div class="products">
 
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

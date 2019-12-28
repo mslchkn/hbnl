@@ -80,7 +80,32 @@ a {
 .section-margin {
     margin: 45px 0
 }
-
+.cart-preview {
+    width: auto;
+    max-width: 800px;
+    z-index: 100000;
+}
+.cart-preview .modal-content {
+    padding: 15px;
+}
+.cart-table .heading {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.product-cart {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.product-cart img {
+    max-width: 100%;
+}
+.subtotal-row {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+.subtotal-row .sum {
+    text-align: right;
+}
 @media (min-width: 980px) {
     .section-margin {
         margin: 70px 0
@@ -132,7 +157,7 @@ a {
 .header_area {
     position: relative;
     width: 100%;
-    z-index: 9999;
+    z-index: 9;
     transition: background 0.4s, all 0.3s linear;
     box-shadow: 0px 10px 27px 3px rgba(221, 221, 221, 0.3)
 }
@@ -382,6 +407,9 @@ a {
 }
 
 @media (max-width: 767px) {
+    .cart-preview {
+        max-width: 100%;
+    }
     .header-top .header-top-left .text {
         display: none
     }
@@ -958,7 +986,7 @@ a {
 }
 
 .offer {
-    background: url("../img/home/parallax-bg.png") right center no-repeat;
+    background: url("../images/parallax-bg.png") right center no-repeat;
     background-size: cover
 }
 

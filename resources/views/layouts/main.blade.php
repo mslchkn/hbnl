@@ -8,7 +8,7 @@
     <title>Hub Nail - @yield('meta_title', 'title')</title>
     <meta name="description" content="@yield('meta_description', 'description')">
 
-    <link rel="icon" href="@yield('path_favicon', \Illuminate\Support\Facades\URL::asset('assets/img/favicon.png'))" type="image/png">
+    <link rel="icon" href="@yield('path_favicon', \Illuminate\Support\Facades\URL::asset('assets/images/Fevicon.png'))" type="image/png">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/themify-icons.css')}}">
@@ -23,7 +23,7 @@
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="index.html"><img src="/assets/images/logo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
@@ -41,7 +41,7 @@
                                 @endif
                             </button>
                         </li>
-                        <li class="nav-item"><a class="button button-header" href="#">Магазин</a></li>
+                        <li class="nav-item"><a class="button button-header" href="#">�������</a></li>
                     </ul>
                 </div>
             </div>
@@ -89,12 +89,12 @@
                     <div class="single-footer-widget instafeed">
                         <h4 class="footer_title">Gallery</h4>
                         <ul class="list instafeed d-flex flex-wrap">
-                            <li><img src="img/gallery/r1.jpg" alt=""></li>
-                            <li><img src="img/gallery/r2.jpg" alt=""></li>
-                            <li><img src="img/gallery/r3.jpg" alt=""></li>
-                            <li><img src="img/gallery/r5.jpg" alt=""></li>
-                            <li><img src="img/gallery/r7.jpg" alt=""></li>
-                            <li><img src="img/gallery/r8.jpg" alt=""></li>
+                            <li><img src="/assets/images/r1.jpg" alt=""></li>
+                            <li><img src="/assets/images/r2.jpg" alt=""></li>
+                            <li><img src="/assets/images/r3.jpg" alt=""></li>
+                            <li><img src="/assets/images/r5.jpg" alt=""></li>
+                            <li><img src="/assets/images/r7.jpg" alt=""></li>
+                            <li><img src="/assets/images/r8.jpg" alt=""></li>
                         </ul>
                     </div>
                 </div>
@@ -165,10 +165,9 @@
             var id = button.data('id');
 
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/product/" + id,
+                url: "http://www.hubnail.com/maslechkin/product/" + id,
                 success: function(data){
                     modal.find('.modal-content#product-view').html(data);
-                    console.log(data);
                 }
             });
         });
@@ -187,16 +186,16 @@
 
         function sendToCart(id, modal) {
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/cart/product/" + id,
+                url: "http://www.hubnail.com/maslechkin/cart/product/" + id,
                 method: 'POST',
                 success: function(data){
-                    modal.find('.cart-table tbody').html(data);
+                    modal.find('.cart-table .products').html(data);
                     $('.cart-product-quantity').on('change', function(){
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
                     $('#sendCart').on('click', function(){
                         $.ajax({
-                            url: "http://hubnail.loc/maslechkin/cart/send",
+                            url: "http://hubnail.com/maslechkin/cart/send",
                             method: 'POST',
                             success: function(data){
                                 console.log('Success ');
@@ -209,10 +208,10 @@
 
         function changeCount(id, modal, product_sum) {
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/cart/product/" + id + "/count/" + product_sum,
+                url: "http://www.hubnail.com/maslechkin/cart/product/" + id + "/count/" + product_sum,
                 method: 'POST',
                 success: function(data){
-                    modal.find('.cart-table tbody').html(data);
+                    modal.find('.cart-table .products').html(data);
                     $('.cart-product-quantity').on('change', function(){
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
@@ -222,16 +221,16 @@
 
         function getCartProducts(modal) {
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/cart/product/",
+                url: "http://www.hubnail.com/maslechkin/cart/product/",
                 method: 'GET',
                 success: function(data){
-                    modal.find('.cart-table tbody').html(data);
+                    modal.find('.cart-table .products').html(data);
                     $('.cart-product-quantity').on('change', function(){
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
                     $('#sendCart').on('click', function(){
                         $.ajax({
-                            url: "http://hubnail.loc/maslechkin/cart/send",
+                            url: "http://www.hubnail.com/maslechkin/cart/send",
                             method: 'POST',
                             success: function(data){
                                 console.log('Success ');
@@ -241,8 +240,6 @@
                 }
             });
         }
-
-
     });
 </script>
 </body>
