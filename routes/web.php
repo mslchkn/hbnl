@@ -51,6 +51,11 @@ $router->post('/maslechkin/cart/send', [
     'uses' => 'CartController@send'
 ]);
 
+$router->get('/maslechkin/product', [
+    'as' => 'product.get.all',
+    'uses' => 'ProductController@getAll'
+]);
+
 $router->post('/auth', [
     'as' => 'post.uth',
     'uses' => 'Admin\AuthController@auth'

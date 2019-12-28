@@ -31,17 +31,40 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link">about us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Контактьі</a>
+                        </li>
+                    </ul>
                     <ul class="nav-shop">
+                        <li class="nav-item">
+                           <span class="fa fa-phone"></span>
+                        </li>
+                        <li class="nav-item">
+                            <i class="ti-instagram"></i>
+                        </li>
+                        <li class="nav-item">
+                            <span class="fa ti-facebook"></span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="fa fa-location-arrow"></span>
+                        </li>
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
                         <li class="nav-item">
                             <button id="top-cart" data-toggle="modal" data-target="#modal-cart">
                                 <i class="ti-shopping-cart"></i>
-                                @if($cart_sum > 0)
-                                    <span class="nav-shop__circle">{{$cart_sum}}</span>
-                                @endif
+                                <span class="nav-shop__circle">
+                                    @if($cart_sum > 0){{$cart_sum}}@endif
+                                </span>
                             </button>
                         </li>
-                        <li class="nav-item"><a class="button button-header" href="#">Магазин</a></li>
+                        <li class="nav-item"><a class="button button-header" href="{{ URL::route('product.get.all') }}">Магазин</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,20 +72,38 @@
     </div>
 </header>
 <!--================ End Header Menu Area =================-->
-
 <main class="site-main">
     @yield('content')
 </main>
+<!-- ================ Subscribe section start ================= -->
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <h3 class="subscribe__title">Подписка на новости</h3>
+            <p>Текст про подписку</p>
+            <div id="mc_embed_signup">
+                <form target="_blank" method="get" class="subscribe-form form-inline mt-5 pt-1">
+                    <div class="form-group ml-sm-auto">
+                        <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Email"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'">
+                        <div class="info"></div>
+                    </div>
+                    <button class="button button-subscribe mr-auto mb-1" type="submit">Подписаться</button>
+                </form>
+            </div>
 
-
+        </div>
+    </div>
+</section>
+<!-- ================ Subscribe section end ================= -->
 <!--================ Start footer Area  =================-->
 <footer class="footer">
     <div class="footer-area">
         <div class="container">
             <div class="row section_gap">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-5 col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
-                        <h4 class="footer_title large_title">Our Mission</h4>
+                        <h4 class="footer_title large_title">Заголовок</h4>
                         <p>
                             So seed seed green that winged cattle in. Gathering thing made fly you're no
                             divided deep moved us lan Gathering thing us land years living.
@@ -74,33 +115,18 @@
                 </div>
                 <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
-                        <h4 class="footer_title">Quick Links</h4>
+                        <h4 class="footer_title">Меню</h4>
                         <ul class="list">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
                             <li><a href="#">Blog</a></li>
-                            <li><a href="#">Product</a></li>
-                            <li><a href="#">Brand</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">About us</a></li>
                             <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="single-footer-widget instafeed">
-                        <h4 class="footer_title">Gallery</h4>
-                        <ul class="list instafeed d-flex flex-wrap">
-                            <li><img src="img/gallery/r1.jpg" alt=""></li>
-                            <li><img src="img/gallery/r2.jpg" alt=""></li>
-                            <li><img src="img/gallery/r3.jpg" alt=""></li>
-                            <li><img src="img/gallery/r5.jpg" alt=""></li>
-                            <li><img src="img/gallery/r7.jpg" alt=""></li>
-                            <li><img src="img/gallery/r8.jpg" alt=""></li>
                         </ul>
                     </div>
                 </div>
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
-                        <h4 class="footer_title">Contact Us</h4>
+                        <h4 class="footer_title">Контактьі</h4>
                         <div class="ml-40">
                             <p class="sm-head">
                                 <span class="fa fa-location-arrow"></span>
@@ -136,9 +162,8 @@
         <div class="container">
             <div class="row d-flex">
                 <p class="col-lg-12 footer-text text-center">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                </p>
             </div>
         </div>
     </div>
@@ -191,6 +216,9 @@
                 method: 'POST',
                 success: function(data){
                     modal.find('.cart-table tbody').html(data);
+                    $('.nav-shop__circle').html(modal.find('tr.product-cart').length > 0 ?
+                        modal.find('tr.product-cart').length : ''
+                    );
                     $('.cart-product-quantity').on('change', function(){
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
@@ -213,6 +241,10 @@
                 method: 'POST',
                 success: function(data){
                     modal.find('.cart-table tbody').html(data);
+                    $('.nav-shop__circle').html(modal.find('tr.product-cart').length > 0 ?
+                        modal.find('tr.product-cart').length : ''
+                    );
+
                     $('.cart-product-quantity').on('change', function(){
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
@@ -226,6 +258,9 @@
                 method: 'GET',
                 success: function(data){
                     modal.find('.cart-table tbody').html(data);
+                    $('.nav-shop__circle').html(modal.find('tr.product-cart').length > 0 ?
+                        modal.find('tr.product-cart').length : ''
+                    );
                     $('.cart-product-quantity').on('change', function(){
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
