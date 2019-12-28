@@ -9,7 +9,7 @@
             <div class="row no-gutters align-items-center pt-60px">
                 <div class="col-5 d-none d-sm-block">
                     <div class="hero-banner__img">
-                        <img src="{{ URL::route('product.get.all') }}/assets/images/hero-banner.png"/>
+                        <img src="{{ URL::route('catalog.page') }}/assets/images/hero-banner.png"/>
                     </div>
                 </div>
                 <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
@@ -18,7 +18,7 @@
                         <h1>Browse Our Premium Product</h1>
                         <p>Us which over of signs divide dominion deep fill bring they're meat beho upon own earth
                             without morning over third. Their male dry. They are great appear whose land fly grass.</p>
-                        <a class="button button-hero" href="{{ URL::route('product.get.all') }}">В магазин</a>
+                        <a class="button button-hero" href="{{ URL::route('catalog.page') }}">В магазин</a>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
     <section class="section-margin calc-60px">
         <div class="container">
             <div class="section-intro pb-60px">
-                <p>Популярньіе продуктьі</p>
+                <p>Популярные продукты</p>
                 <h2>Trending <span class="section-intro__style">Product</span></h2>
             </div>
             <div class="row">
@@ -119,37 +119,4 @@
         </div>
     </section>
     <!-- ================ Best Selling item  carousel end ================= -->
-    <!-- ================ Modal windows ========================= -->
-    <!-- ================ Modal product view ==================== -->
-    <div class="modal fade" id="modal-view-product" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" id="product-view">
-
-            </div>
-        </div>
-    </div>
-    <!-- ================ Modal cart ============================ -->
-    <div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" style="width:1200px; padding: 5px;">
-                <h3 style="text-align: center">Оформление заказа</h3>
-                    <table class="table cart-table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Товар</th>
-                            <th scope="col">Цена</th>
-                            <th scope="col">Количество</th>
-                            <th scope="col">Сумма</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-            </div>
-        </div>
-    </div>
-    <!-- ================ End of modal windows ================== -->
 @stop

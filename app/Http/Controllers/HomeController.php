@@ -35,6 +35,7 @@ class HomeController extends Controller
         return view('home',[
             'top' => !empty($top) ? $top : [],
             'best' => !empty($best) ? $best : [],
+            'current_page' => 'home.page',
             'cart_sum' => $cart_sum,
             'meta_title' => 'Редактировать главную страницу',
             'meta_description' => 'Редактировать главную страницу',

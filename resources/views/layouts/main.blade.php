@@ -8,7 +8,8 @@
     <title>Hub Nail - @yield('meta_title', 'title')</title>
     <meta name="description" content="@yield('meta_description', 'description')">
 
-    <link rel="icon" href="@yield('path_favicon', \Illuminate\Support\Facades\URL::asset('assets/img/favicon.png'))" type="image/png">
+    <link rel="icon" href="@yield('path_favicon', \Illuminate\Support\Facades\URL::asset('assets/images/Fevicon.png'))"
+          type="image/png">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/themify-icons.css')}}">
@@ -23,8 +24,9 @@
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                <a class="navbar-brand logo_h" href="{{ URL::route('home.page') }}"><img src="/assets/images/logo.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -32,19 +34,19 @@
                 </button>
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link">about us</a>
+                        <li class="nav-item @if($current_page == 'aboutus.page') active @endif">
+                            <a class="nav-link" href="{{ URL::route('aboutus.page') }}">Про нас</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link">blog</a>
+                        <li class="nav-item @if($current_page == 'blog.page') active @endif">
+                            <a class="nav-link" href="{{ URL::route('blog.page') }}">Блог</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Контактьі</a>
+                        <li class="nav-item @if($current_page == 'contacts.page') active @endif">
+                            <a class="nav-link" href="{{ URL::route('contacts.page') }}">Контакты</a>
                         </li>
                     </ul>
                     <ul class="nav-shop">
                         <li class="nav-item">
-                           <span class="fa fa-phone"></span>
+                            <span class="fa fa-phone"></span>
                         </li>
                         <li class="nav-item">
                             <i class="ti-instagram"></i>
@@ -55,7 +57,9 @@
                         <li class="nav-item">
                             <span class="fa fa-location-arrow"></span>
                         </li>
-                        <li class="nav-item"><button><i class="ti-search"></i></button></li>
+                        {{--<li class="nav-item">--}}
+                            {{--<button><i class="ti-search"></i></button>--}}
+                        {{--</li>--}}
                         <li class="nav-item">
                             <button id="top-cart" data-toggle="modal" data-target="#modal-cart">
                                 <i class="ti-shopping-cart"></i>
@@ -64,7 +68,9 @@
                                 </span>
                             </button>
                         </li>
-                        <li class="nav-item"><a class="button button-header" href="{{ URL::route('product.get.all') }}">Магазин</a></li>
+                        <li class="nav-item @if($current_page == 'products.page') active @endif">
+                            <a class="button button-header" href="{{ URL::route('catalog.page') }}">Магазин</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -109,7 +115,8 @@
                             divided deep moved us lan Gathering thing us land years living.
                         </p>
                         <p>
-                            So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
+                            So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep
+                            moved
                         </p>
                     </div>
                 </div>
@@ -117,16 +124,16 @@
                     <div class="single-footer-widget tp_widgets">
                         <h4 class="footer_title">Меню</h4>
                         <ul class="list">
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ URL::route('blog.page') }}">Блог</a></li>
+                            <li><a href="{{ URL::route('catalog.page') }}">Каталог</a></li>
+                            <li><a href="{{ URL::route('aboutus.page') }}">Про нас</a></li>
+                            <li><a href="{{ URL::route('contacts.page') }}">Контакты</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
-                        <h4 class="footer_title">Контактьі</h4>
+                        <h4 class="footer_title">Контакты</h4>
                         <div class="ml-40">
                             <p class="sm-head">
                                 <span class="fa fa-location-arrow"></span>
@@ -162,25 +169,58 @@
         <div class="container">
             <div class="row d-flex">
                 <p class="col-lg-12 footer-text text-center">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                    All rights reserved
                 </p>
             </div>
         </div>
     </div>
 </footer>
+<!-- ================ Modal product view ==================== -->
+<div class="modal fade" id="modal-view-product" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="product-view">
+
+        </div>
+    </div>
+</div>
+<!-- ================ Modal cart ============================ -->
+<div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered cart-preview" role="document">
+        <div class="modal-content">
+            <h3 style="text-align: center">Оформление заказа</h3>
+            <div class="cart-table">
+                <div class="heading">
+                    <div>Товар</div>
+                    <div>Цена</div>
+                    <div>Количество</div>
+                    <div>Сумма</div>
+                </div>
+                <div class="products">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ================ End of modal windows ================== -->
 <!--================ End footer Area  =================-->
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/skrollr.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/owl.carousel.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/mail-script.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/main.js') }}"></script>
 <script>
+    $(document).ready(function () {
 
-    $( document ).ready(function() {
-        $('#loginSubmit').click(function(){
+        var routeProduct = '{{env('APP_URL')}}' + "maslechkin/cart/product/";
+        var routeCartSend = '{{env('APP_URL')}}' + "maslechkin/cart/send";
+
+        $('#loginSubmit').click(function () {
             alert(888);
         });
 
@@ -190,10 +230,9 @@
             var id = button.data('id');
 
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/product/" + id,
-                success: function(data){
+                url: routeProduct + id,
+                success: function (data) {
                     modal.find('.modal-content#product-view').html(data);
-                    console.log(data);
                 }
             });
         });
@@ -201,7 +240,7 @@
         $('#modal-cart').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
 
-            if(button.data('id')) {
+            if (button.data('id')) {
                 var id = button.data('id');
                 sendToCart(id, $(this));
             } else {
@@ -212,21 +251,21 @@
 
         function sendToCart(id, modal) {
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/cart/product/" + id,
+                url: routeProduct + id,
                 method: 'POST',
-                success: function(data){
-                    modal.find('.cart-table tbody').html(data);
-                    $('.nav-shop__circle').html(modal.find('tr.product-cart').length > 0 ?
-                        modal.find('tr.product-cart').length : ''
-                    );
-                    $('.cart-product-quantity').on('change', function(){
+                success: function (data) {
+                    modal.find('.cart-table .products').html(data);
+                    var productsCount = modal.find('.products .product-cart').length;
+                    $('.nav-shop__circle').html(productsCount > 0 ? productsCount : '');
+
+                    $('.cart-product-quantity').on('change', function () {
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
-                    $('#sendCart').on('click', function(){
+                    $('#sendCart').on('click', function () {
                         $.ajax({
-                            url: "http://hubnail.loc/maslechkin/cart/send",
+                            url: routeCartSend,
                             method: 'POST',
-                            success: function(data){
+                            success: function (data) {
                                 console.log('Success ');
                             }
                         });
@@ -236,16 +275,15 @@
         }
 
         function changeCount(id, modal, product_sum) {
+            console.log(product_sum);
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/cart/product/" + id + "/count/" + product_sum,
+                url: routeProduct + id + "/count/" + product_sum,
                 method: 'POST',
-                success: function(data){
-                    modal.find('.cart-table tbody').html(data);
-                    $('.nav-shop__circle').html(modal.find('tr.product-cart').length > 0 ?
-                        modal.find('tr.product-cart').length : ''
-                    );
-
-                    $('.cart-product-quantity').on('change', function(){
+                success: function (data) {
+                    modal.find('.cart-table .products').html(data);
+                    var productsCount = modal.find('.products .product-cart').length;
+                    $('.nav-shop__circle').html(productsCount > 0 ? productsCount : '');
+                    $('.cart-product-quantity').on('change', function () {
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
                 }
@@ -254,21 +292,20 @@
 
         function getCartProducts(modal) {
             $.ajax({
-                url: "http://hubnail.loc/maslechkin/cart/product/",
+                url: routeProduct,
                 method: 'GET',
-                success: function(data){
-                    modal.find('.cart-table tbody').html(data);
-                    $('.nav-shop__circle').html(modal.find('tr.product-cart').length > 0 ?
-                        modal.find('tr.product-cart').length : ''
-                    );
-                    $('.cart-product-quantity').on('change', function(){
+                success: function (data) {
+                    modal.find('.cart-table .products').html(data);
+                    var productsCount = modal.find('.products .product-cart').length;
+                    $('.nav-shop__circle').html(productsCount > 0 ? productsCount : '');
+                    $('.cart-product-quantity').on('change', function () {
                         changeCount($(this).data('id'), modal, $(this).val());
                     });
-                    $('#sendCart').on('click', function(){
+                    $('#sendCart').on('click', function () {
                         $.ajax({
-                            url: "http://hubnail.loc/maslechkin/cart/send",
+                            url: routeCartSend,
                             method: 'POST',
-                            success: function(data){
+                            success: function (data) {
                                 console.log('Success ');
                             }
                         });
@@ -276,8 +313,6 @@
                 }
             });
         }
-
-
     });
 </script>
 </body>

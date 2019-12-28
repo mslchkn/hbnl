@@ -12,17 +12,17 @@
 */
 
 $router->get('/maslechkin', [
-    'as' => 'get.homepage',
+    'as' => 'home.page',
     'uses' => 'HomeController@view'
 ]);
 
-//$router->get('/', [
-//    'as' => 'get.wait',
-//    'uses' => 'HomeController@wait'
-//]);
+$router->get('/', [
+    'as' => 'get.wait',
+    'uses' => 'HomeController@wait'
+]);
 
 $router->get('/login', [
-    'as' => 'get.homepage',
+    'as' => 'login.page',
     'uses' => 'Admin\AuthController@view'
 ]);
 
@@ -51,10 +51,31 @@ $router->post('/maslechkin/cart/send', [
     'uses' => 'CartController@send'
 ]);
 
-$router->get('/maslechkin/product', [
-    'as' => 'product.get.all',
+$router->get('/maslechkin/catalog', [
+    'as' => 'catalog.page',
     'uses' => 'ProductController@getAll'
 ]);
+
+$router->get('/maslechkin/catalog/{category_id}', [
+    'as' => 'catalog.category.page',
+    'uses' => 'ProductController@getAllByCategory'
+]);
+
+$router->get('/maslechkin/about', [
+    'as' => 'aboutus.page',
+    'uses' => 'PageController@about'
+]);
+
+$router->get('/maslechkin/blog', [
+    'as' => 'blog.page',
+    'uses' => 'PageController@blog'
+]);
+
+$router->get('/maslechkin/contacts', [
+    'as' => 'contacts.page',
+    'uses' => 'PageController@contacts'
+]);
+
 
 $router->post('/auth', [
     'as' => 'post.uth',
