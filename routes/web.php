@@ -68,7 +68,12 @@ $router->get('/maslechkin/about', [
 
 $router->get('/maslechkin/blog', [
     'as' => 'blog.page',
-    'uses' => 'PageController@blog'
+    'uses' => 'BlogController@getAll'
+]);
+
+$router->get('/maslechkin/blog/{id}', [
+    'as' => 'blog.one',
+    'uses' => 'BlogController@getOne'
 ]);
 
 $router->get('/maslechkin/contacts', [

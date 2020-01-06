@@ -8,8 +8,7 @@
     <title>Hub Nail - @yield('meta_title', 'title')</title>
     <meta name="description" content="@yield('meta_description', 'description')">
 
-    <link rel="icon" href="@yield('path_favicon', \Illuminate\Support\Facades\URL::asset('assets/images/Fevicon.png'))"
-          type="image/png">
+    <link rel="icon" href="{{ URL::to('/') . '/assets/images/favi_hn5.png'}}" type="image/png">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('assets/css/themify-icons.css')}}">
@@ -24,7 +23,9 @@
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand logo_h" href="{{ URL::route('home.page') }}"><img src="/assets/images/logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="{{ URL::route('home.page') }}">
+                    <img src="{{ URL::to('/') . '/assets/images/logo_hn.png' }}" alt="">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -217,7 +218,8 @@
 <script>
     $(document).ready(function () {
 
-        var routeProduct = '{{env('APP_URL')}}' + "maslechkin/cart/product/";
+        var routeCartProduct = '{{env('APP_URL')}}' + "maslechkin/cart/product/";
+        var routeProduct = '{{env('APP_URL')}}' + "maslechkin/product/";
         var routeCartSend = '{{env('APP_URL')}}' + "maslechkin/cart/send";
 
         $('#loginSubmit').click(function () {
@@ -231,6 +233,7 @@
 
             $.ajax({
                 url: routeProduct + id,
+                method: 'GET',
                 success: function (data) {
                     modal.find('.modal-content#product-view').html(data);
                 }
@@ -251,7 +254,7 @@
 
         function sendToCart(id, modal) {
             $.ajax({
-                url: routeProduct + id,
+                url: routeCartProduct + id,
                 method: 'POST',
                 success: function (data) {
                     modal.find('.cart-table .products').html(data);
@@ -277,7 +280,7 @@
         function changeCount(id, modal, product_sum) {
             console.log(product_sum);
             $.ajax({
-                url: routeProduct + id + "/count/" + product_sum,
+                url: routeCartProduct + id + "/count/" + product_sum,
                 method: 'POST',
                 success: function (data) {
                     modal.find('.cart-table .products').html(data);
@@ -292,7 +295,7 @@
 
         function getCartProducts(modal) {
             $.ajax({
-                url: routeProduct,
+                url: routeCartProduct,
                 method: 'GET',
                 success: function (data) {
                     modal.find('.cart-table .products').html(data);
