@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand logo_h" href="{{ URL::route('home.page') }}">
-                    <img src="{{ URL::to('/') . '/assets/images/logo_hn.png' }}" alt="">
+                    <img src="{{ URL::to('/') . '/assets/images/Logo-2.png' }}" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
@@ -210,7 +210,7 @@
 <!--================ End footer Area  =================-->
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/skrollr.min.js') }}"></script>
+{{--<script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/skrollr.min.js') }}"></script>--}}
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/owl.carousel.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('assets/js/mail-script.js') }}"></script>

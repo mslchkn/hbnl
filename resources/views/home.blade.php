@@ -9,7 +9,7 @@
             <div class="row no-gutters align-items-center pt-60px">
                 <div class="col-5 d-none d-sm-block">
                     <div class="hero-banner__img">
-                        <img src="{{ URL::to('/') }}/assets/images/hero-banner.png"/>
+                        <img src="{{ URL::to('/') }}/assets/images/hero-banner.jpg"/>
                     </div>
                 </div>
                 <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
